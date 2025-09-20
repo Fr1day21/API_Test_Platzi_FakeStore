@@ -21,6 +21,12 @@ public class HelperValidasi {
         this.myID = myID;
     }
 
+    String base_URI = "https://api.escuelajs.co";
+
+    public String getBase_URI() {
+        return base_URI;
+    }
+
 
 
 

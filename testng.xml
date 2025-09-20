@@ -2,7 +2,12 @@
 <suite name="APITestSuite">
     <test name="GetAndPostTests">
         <classes>
+            <class name="loginTest" />
+            <class name="userTest" />
             <class name="productTest" />
+            <class name="filterProductTest" />
+            <class name="categoriesTest" />
+            <class name="locationTest" />
         </classes>
     </test>
 </suite>
