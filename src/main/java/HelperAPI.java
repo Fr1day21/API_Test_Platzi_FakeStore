@@ -1,6 +1,9 @@
-public class HelperValidasi {
+public class HelperAPI {
+
+    String base_URI = "https://api.escuelajs.co";
 
     String title;
+
 
     public String getTitle() {
         return title;
@@ -10,8 +13,8 @@ public class HelperValidasi {
         this.title = title;
     }
 
-
     String myID;
+
 
     public String getMyID() {
         return myID;
@@ -21,16 +24,32 @@ public class HelperValidasi {
         this.myID = myID;
     }
 
-    String base_URI = "https://api.escuelajs.co";
+    String email;
 
-    public String getBase_URI() {
-        return base_URI;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    String password;
 
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    String token;
 
+    public String getToken() {
+        return token;
+    }
 
-
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

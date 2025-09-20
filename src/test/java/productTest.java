@@ -13,13 +13,11 @@ public class productTest {
 
     Faker faker = new Faker();
 
-    String base_uri = "https://api.escuelajs.co";
-
-    HelperValidasi helper = new HelperValidasi();
+    HelperAPI helper = new HelperAPI();
 
     @BeforeTest
     public void setUp(){
-        RestAssured.baseURI = base_uri;
+        RestAssured.baseURI = helper.base_URI;
     }
 
 
@@ -57,7 +55,7 @@ public class productTest {
 
         //Response object
         Map<String, Object> requestBodyMap = new HashMap<>();
-        requestBodyMap.put("title", faker.book().title());
+        requestBodyMap.put("title", "Product Test");
         requestBodyMap.put("price", 100);
         requestBodyMap.put("description", faker.lorem().sentence());
         requestBodyMap.put("categoryId", categories);
@@ -75,12 +73,8 @@ public class productTest {
         //validasi status code
         assertEquals(responsePOST.getStatusCode(), 201);
 
-        //Digunakan untuk melakukan setter validation dari title dikarenakan tergenerate random
-        String titleValidationPOST = responsePOST.jsonPath().getString("title");
-        helper.setTitle(titleValidationPOST);
-
         //validasi value respose dari title
-        assertEquals(responsePOST.jsonPath().getString("title"), helper.getTitle());
+        assertEquals(responsePOST.jsonPath().getString("title"), "Product Test");
 
     }
 
@@ -93,8 +87,8 @@ public class productTest {
 
         //Response object
         Map<String, Object> requestBodyMap = new HashMap<>();
-        requestBodyMap.put("title", faker.book().title());
-        requestBodyMap.put("price", 100);
+        requestBodyMap.put("title", "Update Product Test");
+        requestBodyMap.put("price", 10);
         requestBodyMap.put("description", faker.lorem().sentence());
         requestBodyMap.put("categoryId", categories);
         requestBodyMap.put("images", images);
@@ -106,14 +100,13 @@ public class productTest {
                 .body(requestBodyMap)
                 .request("PUT", "/api/v1/products/" + helper.getMyID());
         assertEquals(response.getStatusCode(), 200);
-
+        assertEquals(response.jsonPath().getString("title"), "Update Product Test");
     }
 
     @Test(priority = 5)
     public void deleteProduct(){
 
         Response response = RestAssured
-                .with()
                 .request("DELETE", "/api/v1/products/" + helper.getMyID());
         assertEquals(response.getStatusCode(), 200);
     }
