@@ -59,12 +59,6 @@ public class userTest {
         //getting id untuk digunakan pada test case yang lain
         String gettingId = response.jsonPath().getString("id");
         helperAPI.setMyID(gettingId);
-
-        String gettingEmail = response.jsonPath().getString("email");
-        helperAPI.setEmail(gettingEmail);
-
-        String gettingPassword = response.jsonPath().getString("password");
-        helperAPI.setPassword(gettingPassword);
     }
 
     @Test(priority = 3)
