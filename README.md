@@ -32,7 +32,7 @@ Build dependency
   mvn clean install
 ```
 
-Running test run
+Running test run 
 
 ```bash
   mvn clean test "-DsuiteXmlFile=testng.xml"
