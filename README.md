@@ -29,12 +29,12 @@ Run Docker image
 Build dependency
 
 ```bash
-  mvn install
+  mvn clean install
 ```
 
 Running test run
 
 ```bash
-  mvn test "-DsuiteXmlFile=testng.xml"
+  mvn clean test "-DsuiteXmlFile=testng.xml"
 ```
     
